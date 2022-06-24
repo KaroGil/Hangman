@@ -87,6 +87,13 @@ public class Model extends JComponent {
             canvas.drawString("Game Over!", 450, 100);
         }
 
+        // for (Character letter : hangman.getLettersGuessedList()) {
+        //     canvas.drawString(letter.toString(), 450, 400);
+        // }
+        if(hangman.getCharArray() != null){
+            canvas.drawChars(hangman.getCharArray(),0, hangman.getCharArray().length, 450, 400);
+        }
+
     }
   
 }

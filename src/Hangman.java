@@ -3,19 +3,20 @@ package Hangman.src;
 
 import java.util.ArrayList;
 
-import hangman_local.Ihangman;
-
-
-public class Hangman implements Ihangman{
+public class Hangman implements IHangman{
     private String wordToGuess;
     private int tries;
     private ArrayList<Character> wordGuessedList;
     private ArrayList<Character> charList;
 
+    private ArrayList<Character> lettersGuessed;
+    private char[] charGuessed;
+
     public Hangman(String wordToGuess, int tries){
         this.wordToGuess = wordToGuess.toUpperCase();
         this.tries = tries;
-        wordGuessedList = new ArrayList<>();
+        this.lettersGuessed = new ArrayList<>();
+        this.wordGuessedList = new ArrayList<>();
 
         for (int i = 0; i < wordToGuess.length(); i++) {
             if(wordToGuess.charAt(i) == ' '){
@@ -41,6 +42,7 @@ public class Hangman implements Ihangman{
     public ArrayList<Character> getWordList(){
         return wordGuessedList;
     }
+
 
     @Override
     public int getTries() {
@@ -108,5 +110,23 @@ public class Hangman implements Ihangman{
         }
         return charList;
     }
-    
+
+    @Override
+    public ArrayList<Character> getLettersGuessedList() {
+        return this.lettersGuessed;
+    }
+
+    @Override
+    public void addLetterGuessed(Character letter) {
+        lettersGuessed.add(letter);
+    }
+
+    public char[] getCharArray(){
+        charGuessed =   new char[24];
+        for (int i = 0; i < lettersGuessed.size(); i++) {
+            charGuessed[i] = lettersGuessed.get(i);
+        }
+        System.out.println(charGuessed);
+        return charGuessed;
+    }
 }

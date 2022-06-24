@@ -1,5 +1,7 @@
 package Hangman.src;
 
+import java.util.ArrayList;
+
 public interface IHangman {
     
     /*
@@ -41,4 +43,16 @@ public interface IHangman {
      * changes the part of the word the players sees.
      */
     void changeViewWord(char letterGuessed,  int index);
+
+    /**
+     * gets the list of letters the player has already guessed.
+     * @return guessedLetter list
+     */
+    ArrayList<Character> getLettersGuessedList();
+
+    /**
+     * adds a guessed letter to the gussed letter list
+     */
+    void addLetterGuessed(Character letter);
+
 }

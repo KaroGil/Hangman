@@ -50,6 +50,7 @@ public class HangmanController implements java.awt.event.KeyListener{
     
             if(countWrong>0 && countRight==0){
                 model.hangman.failedTry();
+                model.hangman.addLetterGuessed(e.getKeyChar());
                 System.out.println(model.hangman.getTries());
             }
           
