@@ -77,7 +77,7 @@ public class Model extends JComponent {
             }            
         }
         
-        if(life > 0){
+        if(life > 0 && !hangman.checkWin()){
             canvas.drawString("Press a key to guess letter!", 450, 100);
         }
         else if(hangman.checkWin()){

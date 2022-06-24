@@ -33,34 +33,34 @@ public class HangmanController implements java.awt.event.KeyListener{
         int countRight = 0;
         
         //lopping thru word to see if the key pressed matches a character in the word
-        for (int i = 0; i < wordInChar.size(); i++) {
-            if(keyCode == wordInChar.get(i)){
-                System.out.println("correct");
-
-                model.repaint();
-                model.hangman.changeViewWord( wordInChar.get(i), i);
-
-                System.out.println(model.hangman.getWordList().toString());
-                countRight++;
+        if(state == 0){
+            for (int i = 0; i < wordInChar.size(); i++) {
+                if(keyCode == wordInChar.get(i)){
+    
+                    model.repaint();
+                    model.hangman.changeViewWord( wordInChar.get(i), i);
+    
+                    System.out.println(model.hangman.getWordList().toString());
+                    countRight++;
+                }
+                else{
+                    countWrong++;
+                }
             }
-            else{
-                countWrong++;
+    
+            if(countWrong>0 && countRight==0){
+                model.hangman.failedTry();
+                System.out.println(model.hangman.getTries());
             }
+          
+            if(model.hangman.checkWin()){
+                state = 1;
+            }
+            else if(model.hangman.checkLoose()){
+                state = 2;
+            }
+            model.repaint();
         }
-        System.out.println(countWrong);
-
-        if(countWrong>0 && countRight==0){
-            model.hangman.failedTry();
-            System.out.println(model.hangman.getTries());
-        }
-      
-        if(model.hangman.checkWin()){
-            state = 1;
-        }
-        else if(model.hangman.checkLoose()){
-            state = 2;
-        }
-        model.repaint();
         
     }
 

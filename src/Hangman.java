@@ -15,7 +15,6 @@ public class Hangman implements Ihangman{
     public Hangman(String wordToGuess, int tries){
         this.wordToGuess = wordToGuess.toUpperCase();
         this.tries = tries;
-        charList = new ArrayList<>();
         wordGuessedList = new ArrayList<>();
 
         for (int i = 0; i < wordToGuess.length(); i++) {
@@ -27,7 +26,6 @@ public class Hangman implements Ihangman{
             }
         }
 
-        System.out.println(wordToGuess);
     }
 
     @Override
@@ -97,12 +95,14 @@ public class Hangman implements Ihangman{
 
     public boolean checkWin(){
         if(!wordGuessedList.contains('_')){
+            System.out.println("WIN");
             return true;
         }
         return false;
     }
 
     public ArrayList<Character> convertToCharArray(){
+        charList = new ArrayList<>();
         for (int i = 0; i < wordToGuess.length(); i++) {
            charList.add(wordToGuess.charAt(i));
         }
