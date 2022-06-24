@@ -97,7 +97,6 @@ public class Hangman implements IHangman{
 
     public boolean checkWin(){
         if(!wordGuessedList.contains('_')){
-            System.out.println("WIN");
             return true;
         }
         return false;
@@ -118,7 +117,7 @@ public class Hangman implements IHangman{
 
     @Override
     public void addLetterGuessed(Character letter) {
-        lettersGuessed.add(letter);
+        lettersGuessed.add(Character.toUpperCase(letter));
     }
 
     public char[] getCharArray(){

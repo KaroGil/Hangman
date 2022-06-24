@@ -46,6 +46,8 @@ public class Model extends JComponent {
     void drawWord(Graphics canvas){
         ArrayList<Character> list = hangman.getWordList();
         String listString = list.toString().replaceAll(",", " ").replace("[", " ").replaceAll("]", " ");
+        canvas.setColor(Color.black);
+        canvas.setFont(new Font("Serif", Font.BOLD, 20));
         canvas.drawString(listString, 450, 200);
     }
 
@@ -84,13 +86,14 @@ public class Model extends JComponent {
             canvas.drawString("You guessed the word! You win!!", 450, 100);
         }
         else{
-            canvas.drawString("Game Over!", 450, 100);
+            canvas.setColor(new Color(1f,0f,0f,.5f ));
+            canvas.fillRect(0, 0, 700, 500);
+            canvas.setFont(new Font("Serif", Font.BOLD, 50));
+            canvas.drawString("Game Over!", 200, 200);
         }
-
-        // for (Character letter : hangman.getLettersGuessedList()) {
-        //     canvas.drawString(letter.toString(), 450, 400);
-        // }
         if(hangman.getCharArray() != null){
+            canvas.setColor(Color.black);
+            canvas.setFont(new Font("Serif", Font.BOLD, 20));
             canvas.drawChars(hangman.getCharArray(),0, hangman.getCharArray().length, 450, 400);
         }
 

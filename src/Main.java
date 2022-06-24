@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Model model = new Model();
 
-        HangmanController controll = new HangmanController(model);
+        HangmanController controll = new HangmanController(model);        
 
         JFrame frame = new JFrame(WINDOW_TITLE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

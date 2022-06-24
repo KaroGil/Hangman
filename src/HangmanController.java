@@ -33,7 +33,7 @@ public class HangmanController implements java.awt.event.KeyListener{
         int countRight = 0;
         
         //lopping thru word to see if the key pressed matches a character in the word
-        if(state == 0){
+        if(state == 0 && !letterAlreadyGuessed(keyCode)){
             for (int i = 0; i < wordInChar.size(); i++) {
                 if(keyCode == wordInChar.get(i)){
     
@@ -65,6 +65,19 @@ public class HangmanController implements java.awt.event.KeyListener{
         
     }
 
+    /**
+     * checks if the player has already tried to guess that lette
+     * @param keycode
+     * @return true if the player has tried to guess that letter already, false otherwise
+     */
+    private boolean letterAlreadyGuessed(int keycode){
+        for (int i = 0; i < model.hangman.getLettersGuessedList().size(); i++) {
+            if(keycode == model.hangman.getLettersGuessedList().get(i)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {
