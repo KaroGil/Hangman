@@ -50,36 +50,40 @@ public class Model extends JComponent {
     }
 
     void drawLostLife(Graphics canvas, int life){
-        if(life == 5){
+        if(life <= 5){
             //head
             canvas.drawOval(285, 180, 30, 30);
-        }
-        if(life == 4){
-            //body
-            canvas.drawLine(300, 210, 300, 280);
-        }
-    //arms
-       if(life == 3){
-            //right
-            canvas.drawLine(300, 230, 340, 250);
-        }
-       if(life == 2){
-            //left
-            canvas.drawLine(300, 230, 260, 250);
-        }
-    //legs
-       if(life == 1){
-            //right
-            canvas.drawLine(300, 280, 340, 320);
-        }
-       if(life == 0){
-            //left
-            canvas.drawLine(300, 280, 260, 320);
+            if(life <= 4){
+                //body
+                canvas.drawLine(300, 210, 300, 280);
+                //arms
+                if(life <= 3){
+                    //right
+                    canvas.drawLine(300, 230, 340, 250);
+                    if(life <= 2){
+                        //left
+                        canvas.drawLine(300, 230, 260, 250);
+                        //legs
+                        if(life <= 1){
+                            //right
+                            canvas.drawLine(300, 280, 340, 320);
+                            if(life <= 0){
+                                //left
+                                canvas.drawLine(300, 280, 260, 320);
+                            }
+                        }
+                    }
+                }
+            }            
         }
         
-        if(life >0){
-            canvas.drawString("Guess letter!", 450, 100);
-        }else{
+        if(life > 0){
+            canvas.drawString("Press a key to guess letter!", 450, 100);
+        }
+        else if(hangman.checkWin()){
+            canvas.drawString("You guessed the word! You win!!", 450, 100);
+        }
+        else{
             canvas.drawString("Game Over!", 450, 100);
         }
 

@@ -49,6 +49,10 @@ public class Hangman implements Ihangman{
         return this.tries;
     }
 
+    public void failedTry(){
+        this.tries--;
+    }
+
     @Override
     public boolean checkLetterInAlphabet( char letter) {
         if((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z')){
