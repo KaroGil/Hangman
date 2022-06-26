@@ -12,9 +12,9 @@ public class Hangman implements IHangman{
     private ArrayList<Character> lettersGuessed;
     private char[] charGuessed;
 
-    public Hangman(String wordToGuess, int tries){
+    public Hangman(String wordToGuess){
         this.wordToGuess = wordToGuess.toUpperCase();
-        this.tries = tries;
+        this.tries = 6;
         this.lettersGuessed = new ArrayList<>();
         this.wordGuessedList = new ArrayList<>();
 
@@ -128,4 +128,5 @@ public class Hangman implements IHangman{
         System.out.println(charGuessed);
         return charGuessed;
     }
+
 }

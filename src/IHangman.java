@@ -55,4 +55,5 @@ public interface IHangman {
      */
     void addLetterGuessed(Character letter);
 
+
 }

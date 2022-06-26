@@ -33,7 +33,12 @@ public class HangmanController implements java.awt.event.KeyListener{
         int countRight = 0;
         
         //lopping thru word to see if the key pressed matches a character in the word
-        if(state == 0 && !letterAlreadyGuessed(keyCode)){
+        if(keyCode == KeyEvent.VK_ENTER && state != 0){
+            model.restart();
+            model.repaint();
+            state = 0;
+        }
+        else if(state == 0 && !letterAlreadyGuessed(keyCode)){
             for (int i = 0; i < wordInChar.size(); i++) {
                 if(keyCode == wordInChar.get(i)){
     
@@ -48,7 +53,7 @@ public class HangmanController implements java.awt.event.KeyListener{
                 }
             }
     
-            if(countWrong>0 && countRight==0){
+            if(countWrong>0 && countRight==0 ){
                 model.hangman.failedTry();
                 model.hangman.addLetterGuessed(e.getKeyChar());
                 System.out.println(model.hangman.getTries());

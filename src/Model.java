@@ -10,7 +10,7 @@ public class Model extends JComponent {
     Hangman hangman;
     private ArrayList<String> words = new ArrayList<>(Arrays.asList("London", "Tokyo", "New York"));
     public Model(){
-        hangman = new Hangman(words.get(randomeIndex()), 6);
+        hangman = new Hangman(words.get(randomeIndex()));
 
         this.setFocusable(true);
         getPreferredSize();
@@ -83,13 +83,20 @@ public class Model extends JComponent {
             canvas.drawString("Press a key to guess letter!", 450, 100);
         }
         else if(hangman.checkWin()){
-            canvas.drawString("You guessed the word! You win!!", 450, 100);
+            canvas.setColor(new Color(0f,1f,0f,.5f ));
+            canvas.fillRect(0, 0, 700, 500);
+            canvas.setColor(Color.black);
+            canvas.setFont(new Font("Serif", Font.BOLD, 30));
+            canvas.drawString("You guessed the word! You win!!", 150, 250);
+            canvas.drawString("Press enter to restart", 150, 300);
         }
         else{
             canvas.setColor(new Color(1f,0f,0f,.5f ));
             canvas.fillRect(0, 0, 700, 500);
             canvas.setFont(new Font("Serif", Font.BOLD, 50));
             canvas.drawString("Game Over!", 200, 200);
+            canvas.drawString("Press enter to restart", 150, 300);
+
         }
         if(hangman.getCharArray() != null){
             canvas.setColor(Color.black);
@@ -99,4 +106,7 @@ public class Model extends JComponent {
 
     }
   
+    public void restart(){
+        hangman = new Hangman(words.get(randomeIndex()));
+    }
 }
